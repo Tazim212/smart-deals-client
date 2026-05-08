@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AllProductsCard = ({ product }) => {
-    const {title, price_max,price_min } = product
+    const {title, price_max,price_min, status} = product
     return (
         <div className="card bg-base-100 w-96 mx-auto shadow-sm">
             <figure>
@@ -10,6 +10,7 @@ const AllProductsCard = ({ product }) => {
                     alt="Shoes" />
             </figure>
             <div className="card-body">
+                <div className="badge badge-success text-gray-100">{status}</div>
                 <h2 className="card-title">{title}</h2>
                 <p className='text-purple-500 font-medium'>$ {price_min}-{price_max}</p>
                 <button className="btn btn-outline btn-primary">View Details</button>

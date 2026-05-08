@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { use, useState } from 'react';
 import AllProductsCard from './AllProductsCard';
 
@@ -6,7 +7,7 @@ const productData = fetch("http://localhost:5000/allproducts").then(res => res.j
 const AllProducts = () => {
     const allProducts = use(productData)
 
-    const [title, setTitle] = useState([])
+    // const [title, setTitle] = useState([])
 
     const handleSearch = e =>{
         const search = e.target.value;
