@@ -1,10 +1,11 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SIgnIn = () => {
     const { handleGoogleSignIn, handleSignIn } = use(AuthContext)
-
+    const [show, setShow] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -15,14 +16,14 @@ const SIgnIn = () => {
 
         // console.log(email, password)
         handleSignIn(email, password)
-        .then(res =>{
-            console.log(res.user)
-            navigate(location?.state || "/")
-            e.target.reset()
-        })
-        .then(err =>{
-            console.log(err)
-        })
+            .then(res => {
+                console.log(res.user)
+                navigate(location?.state || "/")
+                e.target.reset()
+            })
+            .then(err => {
+                console.log(err)
+            })
     }
 
     const handleGoogle = () => {
@@ -43,7 +44,13 @@ const SIgnIn = () => {
                         <label className="label">Email</label>
                         <input type="email" className="input" name="email" placeholder="Email" />
                         <label className="label">Password</label>
-                        <input type="password" className="input" name="password" placeholder="Password" />
+                        <input type={show ? "text" : "password"} className="input" name="password" placeholder="Password" />
+                        {
+                            show ?
+                                <FaEye onClick={() => setShow(false)} className='absolute right-13 top-44'></FaEye>
+                                :
+                                <FaEyeSlash onClick={() => setShow(true)} className='absolute right-13 top-44'></FaEyeSlash>
+                        }
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                     </fieldset>
