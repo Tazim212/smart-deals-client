@@ -4,7 +4,7 @@ const ProductsCard = ({ product }) => {
     // console.log(product)
     const { title, price_min, price_max } = product
     return (
-        <div className="card bg-base-100 w-96 mx-auto shadow-sm">
+        <div className="card bg-base-100 w-70 md:w-96 mx-auto shadow-sm">
             <figure>
                 <img
                     src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"

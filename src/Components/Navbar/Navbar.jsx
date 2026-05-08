@@ -26,7 +26,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-gray-400 shadow-sm">
             <div className="navbar-start">
-                <div className="dropdown">
+                <div className="dropdown -ms-3">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
@@ -36,7 +36,7 @@ const Navbar = () => {
                         {list}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl">Smart Deals</Link>
+            <Link to="/" className="btn btn-ghost text-md md:text-xl -ml-7 font-bold">Smart Deals</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -44,7 +44,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <p className='pr-4'>{user?.email}</p>
+                <p className='pr-1 md:pr-4 text-xs md:text-lg'>{user?.email}</p>
                 {
                     user ?
                         <button onClick={handleSignOut} className='btn btn-secondary'>Log Out</button>

@@ -16,9 +16,9 @@ const AllProducts = () => {
     // console.log(allProducts)
     return (
         <div>
-            <div className='my-5 mx-5 flex justify-between items-center'>
+            <div className='my-5 mx-5 flex flex-col md:flex-row justify-between items-center'>
                 <h3>Total Products: {allProducts.length}</h3>
-                <input onChange={handleSearch} type="text" name="search" placeholder="Type here" className="input" />
+                <input onChange={handleSearch} type="text" name="search" placeholder="Type here" className="input my-2 md:my-0" />
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {
