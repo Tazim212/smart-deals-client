@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 
 const Navbar = () => {
+    const { user, signUserOut } = use(AuthContext)
+
     const list = <>
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/allproducts">All Products</NavLink></li>
-        <li><NavLink to="/myproducts">My Products</NavLink></li>
-        <li><NavLink to="/mybids">My Bids</NavLink></li>
+        {
+            user && <>
+                <li><NavLink to="/allproducts">All Products</NavLink></li>
+                <li><NavLink to="/myproducts">My Products</NavLink></li>
+                <li><NavLink to="/mybids">My Bids</NavLink></li>
+            </>
+        }
         <li><NavLink to="/createproducts">Create Products</NavLink></li>
     </>
+
+    const handleSignOut = () => {
+        signUserOut()
+            .then()
+            .catch(err => {
+                console.log(err)
+            })
+    }
     return (
         <div className="navbar bg-gray-400 shadow-sm">
             <div className="navbar-start">
@@ -19,18 +34,25 @@ const Navbar = () => {
                     <ul
                         tabIndex="-1"
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            {list}
+                        {list}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Smart Deals</a>
+                <Link to="/" className="btn btn-ghost text-xl">Smart Deals</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                {list}
+                    {list}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/signin" className="btn">Log In</Link>
+                <p className='pr-4'>{user?.email}</p>
+                {
+                    user ?
+                        <button onClick={handleSignOut} className='btn btn-secondary'>Log Out</button>
+                        :
+                        <Link to="/signin" className="btn">Log In</Link>
+
+                }
             </div>
         </div>
     );

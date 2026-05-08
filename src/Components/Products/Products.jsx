@@ -6,7 +6,7 @@ const Products = () => {
 
     const productData = use(products);
 
-    console.log(productData)
+    // console.log(productData)
     return (
         <div className='my-5'>
             <h1 className='font-bold text-3xl text-center'>Recent <span className='text-purple-500'>Products</span></h1>

@@ -4,6 +4,7 @@ import Home from "../../Pages/Home/Home";
 import AllProducts from "../../Pages/AllProducts/AllProducts";
 import SIgnIn from "../../Pages/SignIn/SIgnIn";
 import Register from "../../Pages/Register/Register";
+import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -15,8 +16,8 @@ export const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: "allproducts",
-                Component: AllProducts
+                path: "/allproducts",
+                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>
             },
             {
                 path: "/signin",
