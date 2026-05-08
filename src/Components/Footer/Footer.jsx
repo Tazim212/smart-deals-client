@@ -1,6 +1,8 @@
 import React from 'react';
+import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 
 const Footer = () => {
+
     return (
         <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
             <aside>
