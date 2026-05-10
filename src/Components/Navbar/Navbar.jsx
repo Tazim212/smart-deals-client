@@ -36,7 +36,7 @@ const Navbar = () => {
                         {list}
                     </ul>
                 </div>
-            <Link to="/" className="btn btn-ghost text-md md:text-xl -ml-7 font-bold">Smart Deals</Link>
+            <Link to="/" className="btn btn-ghost text-md md:text-xl -ml-7 md:ml-0 font-bold">Smart Deals</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

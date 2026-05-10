@@ -1,7 +1,7 @@
 import React, { use } from 'react';
 import ProductsCard from './ProductsCard';
 import { Link } from 'react-router';
-const products = fetch("http://localhost:5000/product").then(res =>res.json())
+const products = fetch("http://localhost:5000/recentproduct").then(res =>res.json())
 const Products = () => {
 
     const productData = use(products);
