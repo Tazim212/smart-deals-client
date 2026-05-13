@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { handleSignUp, updateUser } = use(AuthContext)
@@ -19,13 +20,31 @@ const Register = () => {
         handleSignUp(email, password)
             .then(res => {
                 console.log(res.user)
+                const userInfo = {
+                    name,
+                    email
+                }
                 updateUser(name)
                     .then(() => { })
                     .catch(err => {
                         console.log(err)
                     })
-                    navigate(location?.state || "/")
-                e.target.reset()
+                fetch("http://localhost:5000/user", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(userInfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if(data.insertedId){
+                            Swal.fire("User Registered Successfully")
+                        }
+                        navigate(location?.state || "/")
+                        e.target.reset()
+                    })
+
             })
             .then(err => {
                 console.log(err)
@@ -42,12 +61,12 @@ const Register = () => {
                         <label className="label">Email</label>
                         <input type="email" className="input" name="email" placeholder="Email" />
                         <label className="label">Password</label>
-                        <input type={show ? "text":"password"} className="input" name="password" placeholder="Password" />
+                        <input type={show ? "text" : "password"} className="input" name="password" placeholder="Password" />
                         {
-                            show ? 
-                            <FaEye onClick={() => setShow(false)} className='absolute right-5 top-46'></FaEye>
-                            :
-                            <FaEyeSlash onClick={() =>setShow(true)} className='absolute right-5 top-46'></FaEyeSlash>
+                            show ?
+                                <FaEye onClick={() => setShow(false)} className='absolute right-5 top-46'></FaEye>
+                                :
+                                <FaEyeSlash onClick={() => setShow(true)} className='absolute right-5 top-46'></FaEyeSlash>
                         }
                         <div><a className="link link-hover">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Register</button>
