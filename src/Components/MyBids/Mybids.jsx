@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const Mybids = () => {
     const { user } = use(AuthContext)
@@ -11,6 +12,24 @@ const Mybids = () => {
                 setBida(data)
             })
     }, [user?.email])
+
+
+    const handleDelete = id =>{
+        // console.log(id)
+        fetch(`http://localhost:5000/bids/${id}`,{
+            method: "DELETE"
+        })
+        .then(res =>res.json())
+        .then(data =>{
+            console.log(data)
+            if(data.deletedCount){
+                const remaining = bids.filter(da => da._id !== id)
+                setBida(remaining)
+                Swal.fire("Bids Deleted Successfully")
+            }
+        })
+    }
+
     return (
         <div className='mt-24'>
             <h1 className='text-3xl font-bold text-center'>My Bids: <span className='text-purple-500'>{bids.length}</span></h1>
@@ -35,7 +54,7 @@ const Mybids = () => {
                                     <td>{bid.product_name}</td>
                                     <td>{bid.buyer_name}</td>
                                     <td>{bid.bid_price}</td>
-                                    <td><button className='btn btn-soft btn-error'>Remove bid</button></td>
+                                    <td><button onClick={() =>handleDelete(bid._id)} className='btn btn-soft btn-error'>Remove bid</button></td>
                                 </tr>)}
                         </tbody>
                     </table>}

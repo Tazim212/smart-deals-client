@@ -9,7 +9,6 @@ const ProductDetails = () => {
     const { user } = use(AuthContext)
     const bidsRef = useRef(null)
     const [bids, setBids] = useState([])
-    // console.log(productDetails)
     const { _id, title, price_min, price_max, description, created_at, location, seller_name, seller_contact, email, status } = productDetails
 
     const handleModal = () => {
@@ -28,7 +27,6 @@ const ProductDetails = () => {
         const price = e.target.price.value
         const contact = e.target.contact.value
 
-        // console.log(name, email, price, contact)
         const bidsValue = {
             productId: _id,
             product_name: title,
@@ -59,7 +57,6 @@ const ProductDetails = () => {
                         timer: 1500
                     });
                 }
-                // console.log(data)
             })
         handleCLose()
     }
@@ -125,9 +122,9 @@ const ProductDetails = () => {
                                         <label>Buyer_Email</label>
                                         <input className='input w-52' type="email" name="email" readOnly defaultValue={user?.email} />
                                         <label>Bid Price</label>
-                                        <input className='w-full input' type="text" name="price" />
+                                        <input className='w-full input' type="text" name="price" required/>
                                         <label>Buyer_Contact</label>
-                                        <input className='w-full input' type="text" name="contact" />
+                                        <input className='w-full input' type="text" name="contact" required/>
                                     </fieldset>
 
                                     <div className='mt-2'>
