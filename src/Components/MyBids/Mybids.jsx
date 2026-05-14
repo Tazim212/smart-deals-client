@@ -31,7 +31,7 @@ const Mybids = () => {
     }
 
     return (
-        <div className='mt-24'>
+        <div className='my-12'>
             <h1 className='text-3xl font-bold text-center'>My Bids: <span className='text-purple-500'>{bids.length}</span></h1>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 {bids.length === 0 ?
