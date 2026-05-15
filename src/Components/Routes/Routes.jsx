@@ -7,8 +7,8 @@ import Register from "../../Pages/Register/Register";
 import PrivateRoute from "../../Pages/PrivateRoute/PrivateRoute";
 import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 import Mybids from "../MyBids/Mybids";
-import MyCollection from "../MyCollection/MyCollection";
 import CreateProduct from "../CreateProduct/CreateProduct";
+import MyProducts from "../MyProducts/MyProducts";
 
 export const router = createBrowserRouter([
     {
@@ -36,8 +36,8 @@ export const router = createBrowserRouter([
                 Component: Mybids
             },
             {
-                path: "/mycollection",
-                Component: MyCollection
+                path: "/myproducts/:email",
+                Component: MyProducts
             },
             {
                 path: "/createproducts",

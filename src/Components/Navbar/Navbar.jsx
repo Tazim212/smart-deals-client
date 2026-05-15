@@ -9,7 +9,7 @@ const Navbar = () => {
         {
             user && <>
                 <li><NavLink to="/allproducts">All Products</NavLink></li>
-                <li><NavLink to="/myproducts">My Products</NavLink></li>
+                <li><NavLink to={`/myproducts/${user?.email}`}>My Products</NavLink></li>
                 <li><NavLink to="/mybids">My Bids</NavLink></li>
             </>
         }
