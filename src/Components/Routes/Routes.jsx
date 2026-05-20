@@ -33,15 +33,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mybids",
-                Component: Mybids
+                element: <PrivateRoute><Mybids></Mybids></PrivateRoute>
             },
             {
-                path: "/myproducts/:email",
-                Component: MyProducts
+                path: "/myproducts",
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
             },
             {
                 path: "/createproducts",
-                Component: CreateProduct
+                element: <PrivateRoute><CreateProduct></CreateProduct></PrivateRoute>
             },
             {
                 path: "/productdetails/:id",

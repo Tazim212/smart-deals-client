@@ -5,8 +5,9 @@ import Swal from 'sweetalert2';
 const Mybids = () => {
     const { user } = use(AuthContext)
     const [bids, setBida] = useState([])
+    
     useEffect(() => {
-        fetch(`http://localhost:5000/bids/${user?.email}`)
+        fetch(`http://localhost:5000/bids?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setBida(data)

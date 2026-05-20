@@ -1,5 +1,7 @@
-import React, { use } from 'react';
+// eslint-disable-next-line no-unused-vars
+import React, { use, useState } from 'react';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const CreateProduct = () => {
 
@@ -11,6 +13,7 @@ const CreateProduct = () => {
         const title = e.target.title.value;
         const min_price = e.target.min_price.value
         const max_price = e.target.max_price.value
+
         const seller_name = e.target.seller_name.value
         const seller_email = e.target.seller_email.value
         const seller_contact = e.target.seller_contact.value
@@ -38,9 +41,15 @@ const CreateProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Product Created Successfully!",
+                        icon: "success"
+                    });
+                }
+                // console.log(data)
             })
-            e.target.reset()
+        e.target.reset()
     }
 
 
@@ -48,36 +57,36 @@ const CreateProduct = () => {
     return (
         <div className='my-9'>
             <h1 className='text-3xl font-bold text-center'>Create A <span className='text-purple-500'>Product</span></h1>
-            <form onSubmit={addNewProduct} className=' bg-gray-200 py-5 px-8 mx-auto w-1/2 my-4'>
-                <div className="grid grid-cols-12 gap-9">
-                    <div className="col-span-6 space-y-2">
-                        <label>Title</label>
+            <form onSubmit={addNewProduct} className=' bg-gray-200 py-5 px-8 mx-auto w-70 md:w-1/2 my-4'>
+                <div className="grid grid-cols-12 gap-3 md:gap-9">
+                    <div className="col-span-12 md:col-span-6 space-y-2">
+                        <label className='text-sm md:text-lg'>Title</label>
                         <input type="text" placeholder="Enter the product Name" name="title" className="input" required />
 
-                        <label className='py-2'>Min Price You want to Sale ($)</label>
+                        <label className='py-2 text-sm md:text-lg'>Min Price You want to Sale ($)</label>
                         <input type="text" placeholder="e.g. 18.5" name='min_price' className="input mt-3" required></input>
 
-                        <label>Product Condition</label>
-                        <div className='flex items-center gap-3 my-4'>
+                        <label className='text-sm md:text-lg'>Product Condition</label>
+                        <div className='flex items-center gap-3 my-0 md:my-4 py-3 md:py-0'>
                             <label className="label">
-                                <input type="checkbox" className="checkbox" name='br' />
+                                <input type="checkbox" className="checkbox" name='brandNew' />
                                 Brand New
                             </label>
                             <label className="label">
-                                <input type="checkbox" className="checkbox" />
+                                <input type="checkbox" className="checkbox" name="used" />
                                 Used
                             </label>
                         </div>
 
-                        <label>Seller Name</label>
+                        <label className='text-sm md:text-lg'>Seller Name</label>
                         <input type="text" placeholder="Enter Your Name" name='seller_name' defaultValue={user?.name} className="input mt-3" required />
 
-                        <label>Seller Contact</label>
+                        <label className='text-sm md:text-lg'>Seller Contact</label>
                         <input type="text" placeholder="Enter Your Number" name='seller_contact' className="input mt-3" required />
                     </div>
 
-                    <div className="col-span-6 space-y-2">
-                        <label>Category</label>
+                    <div className="col-span-12 md:col-span-6 space-y-2">
+                        <label className='text-sm md:text-lg'>Category</label>
                         <select defaultValue="Select A Category" name='category' className="select appearance-none" required>
                             <option disabled={true}>Select A Category</option>
                             <option>Bike or Cars</option>
@@ -88,21 +97,21 @@ const CreateProduct = () => {
                             <option>Airbuds</option>
                         </select>
 
-                        <label>Max Price You want to Sale ($)</label>
+                        <label className='text-sm md:text-lg'>Max Price You want to Sale ($)</label>
                         <input type="text" placeholder="Optional (default = Min Price)" name='max_price' className="input mt-3" required />
 
-                        <label>Product Usage time</label>
+                        <label className='text-sm md:text-lg'>Product Usage time</label>
                         <input type="text" placeholder="e.g. 1 year 3 month" name='usage_time' className="input mt-3" required />
 
-                        <label>Seller Email</label>
+                        <label className='text-sm md:text-lg'>Seller Email</label>
                         <input type="email" placeholder="Enter Your Email" name='seller_email' defaultValue={user?.email} readOnly className="input mt-3" required />
 
-                        <label>Seller Image</label>
+                        <label className='text-sm md:text-lg'>Seller Image</label>
                         <input type="text" placeholder="Your Phone Number" name='seller_number' className="input mt-3" />
                     </div>
                 </div>
                 <div>
-                    <label>Location</label>
+                    <label className=''>Location</label>
                     <input type="text" placeholder="Enter Your Address" name='location' className="input w-full mt-1.5" required />
                 </div>
 
