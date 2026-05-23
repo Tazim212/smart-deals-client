@@ -7,16 +7,18 @@ const CreateProduct = () => {
 
     const { user } = use(AuthContext)
 
+
     const addNewProduct = e => {
         e.preventDefault()
 
         const title = e.target.title.value;
         const min_price = e.target.min_price.value
         const max_price = e.target.max_price.value
-
+        const condition = e.target.condition.value
         const seller_name = e.target.seller_name.value
         const seller_email = e.target.seller_email.value
         const seller_contact = e.target.seller_contact.value
+
         const category = e.target.category.value
         const usage_time = e.target.usage_time.value
         const location = e.target.location.value
@@ -29,6 +31,7 @@ const CreateProduct = () => {
             seller_email,
             seller_contact,
             category,
+            condition,
             usage_time,
             location
         }
@@ -69,13 +72,12 @@ const CreateProduct = () => {
                         <label className='text-sm md:text-lg'>Product Condition</label>
                         <div className='flex items-center gap-3 my-0 md:my-4 py-3 md:py-0'>
                             <label className="label">
-                                <input type="checkbox" className="checkbox" name='brandNew' />
-                                Brand New
+                                <input type="radio" name="condition" className="radio radio-primary" value="brands" />
+                                <label>Brands</label>
+                                <input type="radio" name="condition" className="radio radio-primary" value="used"/>
+                                <label>Used</label>
                             </label>
-                            <label className="label">
-                                <input type="checkbox" className="checkbox" name="used" />
-                                Used
-                            </label>
+                           
                         </div>
 
                         <label className='text-sm md:text-lg'>Seller Name</label>

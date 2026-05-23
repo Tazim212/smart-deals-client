@@ -8,7 +8,11 @@ const MyProducts = () => {
     const [myProduct, setMyProduct] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myproducts?email=${user?.email}`)
+        fetch(`http://localhost:5000/myproducts?email=${user?.email}`,{
+            headers: {
+                authorization: `Bearer ${user?.accessToken}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setMyProduct(data)

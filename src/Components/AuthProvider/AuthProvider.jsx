@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
@@ -22,13 +23,28 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const signUserOut = () =>{
+    const signUserOut = () => {
         setLoading(true)
         return signOut(auth)
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            const loggerUser = { email: currentUser?.email }
+            if (currentUser) {
+                fetch("http://localhost:5000/getToken", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(loggerUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    localStorage.setItem("token", data.token)
+                })
+            }
             setUser(currentUser)
             setLoading(false)
         });
