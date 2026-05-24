@@ -35,7 +35,7 @@ const CreateProduct = () => {
             usage_time,
             location
         }
-        fetch("http://localhost:5000/product", {
+        fetch("https://smart-deals-server-2wlw.onrender.com/product", {
             method: "POST",
             headers: {
                 "content-type": "application/json"

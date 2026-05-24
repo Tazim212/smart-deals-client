@@ -2,7 +2,7 @@
 import React, { use, useState } from 'react';
 import AllProductsCard from './AllProductsCard';
 
-const productData = fetch("http://localhost:5000/allproducts").then(res => res.json())
+const productData = fetch("https://smart-deals-server-2wlw.onrender.com/allproducts").then(res => res.json())
 
 const AllProducts = () => {
     const allProducts = use(productData)

@@ -36,7 +36,7 @@ const ProductDetails = () => {
             buyer_contact: contact
         }
 
-        fetch("http://localhost:5000/bids", {
+        fetch("https://smart-deals-server-2wlw.onrender.com/bids", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -62,7 +62,7 @@ const ProductDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/bids/${_id}`,{
+        fetch(`https://smart-deals-server-2wlw.onrender.com/product/bids/${_id}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`
             }

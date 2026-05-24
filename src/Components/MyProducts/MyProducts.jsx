@@ -8,7 +8,7 @@ const MyProducts = () => {
     const [myProduct, setMyProduct] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myproducts?email=${user?.email}`,{
+        fetch(`https://smart-deals-server-2wlw.onrender.com/myproducts?email=${user?.email}`,{
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`
             }
@@ -33,7 +33,7 @@ const MyProducts = () => {
 
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/myproducts/${id}`, {
+                fetch(`https://smart-deals-server-2wlw.onrender.com/myproducts/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
