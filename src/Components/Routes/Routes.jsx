@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allproducts",
-                element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>
+                Component: AllProducts
             },
             {
                 path: "/signin",

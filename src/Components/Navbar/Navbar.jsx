@@ -6,14 +6,14 @@ const Navbar = () => {
     const { user, signUserOut } = use(AuthContext)
     const list = <>
         <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/allproducts">All Products</NavLink></li>
         {
             user && <>
-                <li><NavLink to="/allproducts">All Products</NavLink></li>
                 <li><NavLink to={`/myproducts?email=${user?.email}`}>My Products</NavLink></li>
                 <li><NavLink to={`/mybids?email=${user?.email}`}>My Bids</NavLink></li>
+                <li><NavLink to="/createproducts">Create Products</NavLink></li>
             </>
         }
-        <li><NavLink to="/createproducts">Create Products</NavLink></li>
     </>
 
     const handleSignOut = () => {
