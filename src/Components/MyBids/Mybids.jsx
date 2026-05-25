@@ -8,7 +8,7 @@ const Mybids = () => {
     
 
     useEffect(() => {
-        fetch(`https://smart-deals-server-2wlw.onrender.com/bids?email=${user?.email}`, {
+        fetch(`http://localhost:5000/bids?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem("token")}`
             }
@@ -34,7 +34,7 @@ const Mybids = () => {
 
             if (result.isConfirmed) {
 
-                fetch(`https://smart-deals-server-2wlw.onrender.com/bids/${id}`, {
+                fetch(`http://localhost:5000/bids/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

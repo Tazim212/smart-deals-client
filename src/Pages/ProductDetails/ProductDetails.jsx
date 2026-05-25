@@ -9,7 +9,8 @@ const ProductDetails = () => {
     const { user } = use(AuthContext)
     const bidsRef = useRef(null)
     const [bids, setBids] = useState([])
-    const { _id, title, price_min, price_max, description, created_at, location, seller_name, seller_contact, email, status } = productDetails
+    const { _id, title, price_min, price_max, description, created_at,
+        location, seller_name, seller_contact, email, status } = productDetails
 
     const handleModal = () => {
         bidsRef.current.showModal()
@@ -36,7 +37,7 @@ const ProductDetails = () => {
             buyer_contact: contact
         }
 
-        fetch("https://smart-deals-server-2wlw.onrender.com/bids", {
+        fetch("http://localhost:5000/bids", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -62,7 +63,7 @@ const ProductDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`https://smart-deals-server-2wlw.onrender.com/product/bids/${_id}`,{
+        fetch(`http://localhost:5000/product/bids/${_id}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`
             }
@@ -126,9 +127,9 @@ const ProductDetails = () => {
                                         <label>Buyer_Email</label>
                                         <input className='input w-52' type="email" name="email" readOnly defaultValue={user?.email} />
                                         <label>Bid Price</label>
-                                        <input className='w-full input' type="text" name="price" required/>
+                                        <input className='w-full input' type="text" name="price" required />
                                         <label>Buyer_Contact</label>
-                                        <input className='w-full input' type="text" name="contact" required/>
+                                        <input className='w-full input' type="text" name="contact" required />
                                     </fieldset>
 
                                     <div className='mt-2'>

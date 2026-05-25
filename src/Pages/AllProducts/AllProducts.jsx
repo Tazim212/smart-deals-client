@@ -1,28 +1,33 @@
 // eslint-disable-next-line no-unused-vars
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import AllProductsCard from './AllProductsCard';
 
-const productData = fetch("https://smart-deals-server-2wlw.onrender.com/allproducts").then(res => res.json())
+// const productData = fetch("http://localhost:5000/allproducts").then(res => res.json())
 
 const AllProducts = () => {
-    const allProducts = use(productData)
+    // const allProducts = use(productData)
+    const [products, setProducts] = useState([])
 
-    // const [title, setTitle] = useState([])
+    const [search, setSearch] = useState('')
 
-    const handleSearch = e =>{
-        const search = e.target.value;
-        console.log(search)
-    }
-    // console.log(allProducts)
+    useEffect(() =>{
+        fetch(`http://localhost:5000/allproducts?search=${search}`)
+        .then(res =>res.json())
+        .then(data =>{
+            setProducts(data)
+        })
+    }, [search])
+
     return (
         <div>
             <div className='my-5 mx-5 flex flex-col md:flex-row justify-between items-center'>
-                <h3>Total Products: {allProducts.length}</h3>
-                <input onChange={handleSearch} type="text" name="search" placeholder="Type here" className="input my-2 md:my-0" />
+                <h3>Total Products: {products.length}</h3>
+                <input onChange={(e) => setSearch(e.target.value)} type="text" name="search" placeholder="Type here" className="input my-2 md:my-0" />
             </div>
+            
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
                 {
-                    allProducts.map(product => <AllProductsCard key={product._id} product={product}></AllProductsCard>)
+                    products.map(product => <AllProductsCard key={product._id} product={product}></AllProductsCard>)
                 }
             </div>
         </div>

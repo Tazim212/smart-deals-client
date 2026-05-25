@@ -1,7 +1,8 @@
 import React, { use } from 'react';
 import ProductsCard from './ProductsCard';
 import { Link } from 'react-router';
-const products = fetch("https://smart-deals-server-2wlw.onrender.com/recentproduct").then(res =>res.json())
+
+const products = fetch("http://localhost:5000/recentproduct").then(res =>res.json())
 
 const Products = () => {
 
