@@ -21,7 +21,7 @@ const AllProducts = () => {
     return (
         <div>
             <div className='my-5 mx-5 flex flex-col md:flex-row justify-between items-center'>
-                <h3>Total Products: {products.length}</h3>
+                <h3 className='font-semibold'>Total Products: {products.length}</h3>
                 <input onChange={(e) => setSearch(e.target.value)} type="text" name="search" placeholder="Type here" className="input my-2 md:my-0" />
             </div>
             
