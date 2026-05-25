@@ -35,7 +35,7 @@ const CreateProduct = () => {
             usage_time,
             location
         }
-        fetch("https://smart-deals-server-2wlw.onrender.com/product", {
+        fetch("https://smart-deals-server-tc3q.onrender.com/product", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -50,7 +50,6 @@ const CreateProduct = () => {
                         icon: "success"
                     });
                 }
-                // console.log(data)
             })
         e.target.reset()
     }

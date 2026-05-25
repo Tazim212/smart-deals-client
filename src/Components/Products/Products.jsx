@@ -2,13 +2,12 @@ import React, { use } from 'react';
 import ProductsCard from './ProductsCard';
 import { Link } from 'react-router';
 
-const products = fetch("http://localhost:5000/recentproduct").then(res =>res.json())
+const products = fetch("https://smart-deals-server-tc3q.onrender.com/recentproduct").then(res =>res.json())
 
 const Products = () => {
 
     const productData = use(products);
 
-    // console.log(productData)
     return (
         <div className='my-5'>
             <h1 className='font-bold text-3xl text-center'>Recent <span className='text-purple-500'>Products</span></h1>

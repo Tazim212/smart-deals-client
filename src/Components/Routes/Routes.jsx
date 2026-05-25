@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: "/productdetails/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productdetails/${params.id}`),
+                loader: ({ params }) => fetch(`https://smart-deals-server-tc3q.onrender.com/productdetails/${params.id}`),
             }
 
         ]

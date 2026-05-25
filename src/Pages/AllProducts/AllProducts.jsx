@@ -2,16 +2,13 @@
 import React, { use, useEffect, useState } from 'react';
 import AllProductsCard from './AllProductsCard';
 
-// const productData = fetch("http://localhost:5000/allproducts").then(res => res.json())
-
 const AllProducts = () => {
-    // const allProducts = use(productData)
     const [products, setProducts] = useState([])
 
     const [search, setSearch] = useState('')
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/allproducts?search=${search}`)
+        fetch(`https://smart-deals-server-tc3q.onrender.com/allproducts?search=${search}`)
         .then(res =>res.json())
         .then(data =>{
             setProducts(data)
