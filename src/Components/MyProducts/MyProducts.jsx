@@ -8,14 +8,18 @@ const MyProducts = () => {
     const [myProduct, setMyProduct] = useState([])
 
     useEffect(() => {
-        fetch(`https://smart-deals-server-tc3q.onrender.com/myproducts?email=${user?.email}`,{
+        fetch(`https://smart-deals-server-tc3q.onrender.com/myproducts?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`
             }
         })
             .then(res => res.json())
             .then(data => {
-                setMyProduct(data)
+                if (Array.isArray(data)) {
+                    setMyProduct(data)
+                } else {
+                    setMyProduct([])
+                }
             })
     }, [user?.email])
 
@@ -90,6 +94,7 @@ const MyProducts = () => {
                                     </td>
                                     <td className='border'>
                                         <button className='btn btn-soft btn-success'>Edit</button>
+                                        <button className='btn btn-soft btn-success ms-2'>Edit</button>
                                         <button onClick={() => handleDelete(product._id)} className='btn btn-soft btn-error ms-2'>Delete</button>
                                     </td>
                                 </tr>)}

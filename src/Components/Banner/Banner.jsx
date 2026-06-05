@@ -2,6 +2,7 @@ import React from 'react';
 import logo1 from "../../assets/bg-hero-left.png"
 import logo2 from "../../assets/bg-hero-right.png"
 import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const Banner = () => {
     return (
@@ -23,7 +24,7 @@ const Banner = () => {
                 </div>
                 <div className='text-center mx-3 md:mx-0'>
                     <button className='btn bg-purple-500 text-white'>Watch All Products</button>
-                    <button className='btn'>Post an product</button>
+                    <Link to="/createproducts"><button className='btn'>Post an product</button></Link>
                 </div>
             </div>
         </div>

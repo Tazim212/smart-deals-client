@@ -22,7 +22,7 @@ const AllProducts = () => {
                 <input onChange={(e) => setSearch(e.target.value)} type="text" name="search" placeholder="Type here" className="input my-2 md:my-0" />
             </div>
             
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     products.map(product => <AllProductsCard key={product._id} product={product}></AllProductsCard>)
                 }

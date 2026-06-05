@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             const loggerUser = { email: currentUser?.email }
             if (currentUser) {
-                fetch("http://localhost:5000/getToken", {
+                fetch("https://smart-deals-server-tc3q.onrender.com/getToken", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

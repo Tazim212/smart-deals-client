@@ -3,12 +3,13 @@ import { Link } from 'react-router';
 
 const ProductsCard = ({ product }) => {
     // console.log(product)
-    const { _id, title, price_min, price_max } = product
+    const { _id, title, price_min, price_max, image } = product
     return (
-        <div className="card bg-base-100 w-70 md:w-96 mx-auto shadow-sm">
+        <div className="card bg-gray-200 w-70 md:w-90 mx-auto shadow-sm">
             <figure>
                 <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                    className='h-50 w-70 px-2 md:px-0 my-3 rounded-md'
+                    src={image}
                     alt="Shoes" />
             </figure>
             <div className="card-body">

@@ -70,7 +70,11 @@ const ProductDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setBids(data)
+                if (Array.isArray(data)) {
+                    setBids(data)
+                } else {
+                    setBids([])
+                }
             }, [_id]
             )
     })

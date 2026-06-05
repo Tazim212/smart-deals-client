@@ -15,7 +15,11 @@ const Mybids = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setBida(data)
+                if (Array.isArray(data)) {
+                    setBida(data)
+                } else {
+                    setBida([])
+                }
             })
     }, [user])
 

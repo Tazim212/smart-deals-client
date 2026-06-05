@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { handleSignUp, updateUser, handleGoogleSignIn} = use(AuthContext)
+    const { handleSignUp, updateUser, handleGoogleSignIn } = use(AuthContext)
     const [show, setShow] = useState(false)
     const [error, setError] = useState("")
 
@@ -19,6 +19,15 @@ const Register = () => {
         const password = e.target.password.value
 
         setError("")
+
+        const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+
+        if (passRegex.test(password)) {
+            setError("Password must contain one uppercase, one lowercase & min 8 characters")
+            return
+        }
+
+
         handleSignUp(email, password)
             .then(() => {
                 // console.log(res.user)
@@ -29,13 +38,14 @@ const Register = () => {
                 updateUser(name)
                     .then(() => { })
                     .catch(err => {
-                        console.log(err)
-                        // setError(err)
+                        // console.log(err)
+                        setError(err)
                     })
-                fetch("http://localhost:5000/user", {
+                fetch("https://smart-deals-server-tc3q.onrender.com/user", {
                     method: "POST",
                     headers: {
-                        "content-type": "application/json"
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem("token")}`
                     },
                     body: JSON.stringify(userInfo)
                 })
@@ -50,18 +60,19 @@ const Register = () => {
 
             })
             .catch(err => {
-                setError(err)
+                setError(err.message)
             })
     }
 
-    const handleGoogle = () =>{
-         handleGoogleSignIn()
+    const handleGoogle = () => {
+        handleGoogleSignIn()
             .then(res => {
                 const userInfo = res.user
-                fetch("http://localhost:5000/user", {
+                fetch("https://smart-deals-server-tc3q.onrender.com/user", {
                     method: "POST",
                     headers: {
-                        "content-type": "application/json"
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem("token")}`
                     },
                     body: JSON.stringify(userInfo)
                 })
@@ -83,7 +94,11 @@ const Register = () => {
                         <label className="label">Email</label>
                         <input type="email" className="input" name="email" placeholder="Email" required />
                         <label className="label">Password</label>
-                        <input type={show ? "text" : "password"} className="input" name="password" placeholder="Password" required />
+                        <input type={show ? "text" : "password"}
+                            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            className="input"
+                            name="password"
+                            placeholder="Password" required />
                         {
                             show ?
                                 <FaEye onClick={() => setShow(false)} className='absolute right-5 top-46'></FaEye>
@@ -107,7 +122,7 @@ const Register = () => {
                             Sign Up with Google
                         </button>
                     </div>
-                    <p className='py-3 text-md text-red-600 text-center'>{error.message}</p>
+                    {error && <p className='py-3 text-md text-red-600 text-center'>{error.message}</p>}
                 </div>
             </div>
         </form>

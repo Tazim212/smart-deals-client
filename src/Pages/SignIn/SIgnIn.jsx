@@ -20,7 +20,15 @@ const SIgnIn = () => {
         handleSignIn(email, password)
             // eslint-disable-next-line no-unused-vars
             .then(res => {
-                // console.log(res.user)
+                const userInfo = res.user;
+                fetch("https://smart-deals-server-tc3q.onrender.com/user",{
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                        authorization: `Bearer ${localStorage.getItem("token")}`
+                    },
+                    body: JSON.stringify(userInfo)
+                })                
                 navigate(location?.state || "/")
                 e.target.reset()
             })
@@ -33,7 +41,7 @@ const SIgnIn = () => {
         handleGoogleSignIn()
             .then(res => {
                 const userInfo = res.user
-                fetch("http://localhost:5000/user", {
+                fetch("https://smart-deals-server-tc3q.onrender.com/user", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
