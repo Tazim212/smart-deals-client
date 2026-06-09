@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const Banner = () => {
     return (
-        <div className='shadow-lg h-90'>
+        <div className='shadow-lg h-90 bg-linear-to-r from-gray-500 to-gray-200'>
             <div className='flex justify-around'>
                 <img src={logo1} className='h-80' alt="" />
                 <img src={logo2} className='h-80' alt="" />

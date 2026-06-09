@@ -20,12 +20,12 @@ const Register = () => {
 
         setError("")
 
-        const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
+        // const passRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/
 
-        if (passRegex.test(password)) {
-            setError("Password must contain one uppercase, one lowercase & min 8 characters")
-            return
-        }
+        // if (passRegex.test(password)) {
+        //     setError("Password must contain one uppercase, one lowercase & min 8 characters")
+        //     return
+        // }
 
 
         handleSignUp(email, password)

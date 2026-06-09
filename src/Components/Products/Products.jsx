@@ -11,7 +11,7 @@ const Products = () => {
     return (
         <div className='my-5'>
             <h1 className='font-bold text-3xl text-center'>Recent <span className='text-purple-500'>Products</span></h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3 gap-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3 gap-5'>
                 {
                     productData.map(product => <ProductsCard key={product._id} product={product}></ProductsCard>)
                 }

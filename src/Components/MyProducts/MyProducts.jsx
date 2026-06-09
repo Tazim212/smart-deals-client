@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyProducts = () => {
 
@@ -22,6 +23,10 @@ const MyProducts = () => {
                 }
             })
     }, [user?.email])
+
+    // const handleUpdate = id =>{
+    //     console.log(id)
+    // }
 
     const handleDelete = (id) => {
 
@@ -67,7 +72,7 @@ const MyProducts = () => {
             <h1 className='text-3xl font-bold text-center'>My Products: <span className='text-purple-500'>{myProduct.length}</span></h1>
             <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
                 {myProduct.length === 0 ?
-                    <h2 className='text-xl text-center py-8'>No bids has been added</h2>
+                    <h2 className='text-xl text-center py-8'>No product has been added</h2>
                     :
                     <table className="table w-11/12 ms-14 my-5 bg-gray-300 border-2 border-solid">
                         <thead>
@@ -93,8 +98,7 @@ const MyProducts = () => {
                                         </span>
                                     </td>
                                     <td className='border'>
-                                        <button className='btn btn-soft btn-success'>Edit</button>
-                                        <button className='btn btn-soft btn-success ms-2'>Edit</button>
+                                        <Link to={`/updateproducts/${product._id}`}><button className='btn btn-soft btn-success ms-2'>Edit</button></Link>
                                         <button onClick={() => handleDelete(product._id)} className='btn btn-soft btn-error ms-2'>Delete</button>
                                     </td>
                                 </tr>)}

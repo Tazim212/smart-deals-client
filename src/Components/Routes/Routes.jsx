@@ -9,6 +9,7 @@ import ProductDetails from "../../Pages/ProductDetails/ProductDetails";
 import Mybids from "../MyBids/Mybids";
 import CreateProduct from "../CreateProduct/CreateProduct";
 import MyProducts from "../MyProducts/MyProducts";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: "/createproducts",
                 element: <PrivateRoute><CreateProduct></CreateProduct></PrivateRoute>
+            },
+            {
+                path: "/updateproducts/:id",
+                Component: UpdateProduct
             },
             {
                 path: "/productdetails/:id",

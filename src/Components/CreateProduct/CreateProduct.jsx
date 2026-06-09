@@ -35,7 +35,7 @@ const CreateProduct = () => {
             usage_time,
             location
         }
-        fetch("https://smart-deals-server-tc3q.onrender.com/product", {
+        fetch("https://smart-deals-server-tc3q.onrender.com/createproducts", {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -59,7 +59,7 @@ const CreateProduct = () => {
     return (
         <div className='my-9'>
             <h1 className='text-3xl font-bold text-center'>Create A <span className='text-purple-500'>Product</span></h1>
-            <form onSubmit={addNewProduct} className=' bg-gray-200 py-5 px-8 mx-auto w-70 md:w-1/2 my-4'>
+            <form onSubmit={addNewProduct} className=' bg-cyan-500 py-5 px-8 mx-auto w-70 md:w-1/2 my-4'>
                 <div className="grid grid-cols-12 gap-3 md:gap-9">
                     <div className="col-span-12 md:col-span-6 space-y-2">
                         <label className='text-sm md:text-lg'>Title</label>
@@ -80,10 +80,10 @@ const CreateProduct = () => {
                         </div>
 
                         <label className='text-sm md:text-lg'>Seller Name</label>
-                        <input type="text" placeholder="Enter Your Name" name='seller_name' defaultValue={user?.name} className="input mt-3" required />
+                        <input type="text" placeholder="Enter Your Name" name='seller_name' defaultValue={user?.displayName} readOnly className="input mt-3 black" required />
 
                         <label className='text-sm md:text-lg'>Seller Contact</label>
-                        <input type="text" placeholder="Enter Your Number" name='seller_contact' className="input mt-3" required />
+                        <input type="tel" maxLength={11} placeholder="Enter Your Number" name='seller_contact' className="input mt-3" required />
                     </div>
 
                     <div className="col-span-12 md:col-span-6 space-y-2">
@@ -105,7 +105,7 @@ const CreateProduct = () => {
                         <input type="text" placeholder="e.g. 1 year 3 month" name='usage_time' className="input mt-3" required />
 
                         <label className='text-sm md:text-lg'>Seller Email</label>
-                        <input type="email" placeholder="Enter Your Email" name='seller_email' defaultValue={user?.email} readOnly className="input mt-3" required />
+                        <input type="email" placeholder="Enter Your Email" name='seller_email' defaultValue={user?.email} readOnly className="input mt-3 text-black" required />
 
                         <label className='text-sm md:text-lg'>Seller Image</label>
                         <input type="text" placeholder="Your Phone Number" name='seller_number' className="input mt-3" />
