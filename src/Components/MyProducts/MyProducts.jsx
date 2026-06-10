@@ -98,7 +98,7 @@ const MyProducts = () => {
                                         </span>
                                     </td>
                                     <td className='border'>
-                                        <Link to={`/updateproducts/${product._id}`}><button className='btn btn-soft btn-success ms-2'>Edit</button></Link>
+                                        <Link to={`/updateproducts/${product._id}`}><button className='btn btn-soft btn-success ms-2 mb-2 md:mb-0'>Edit</button></Link>
                                         <button onClick={() => handleDelete(product._id)} className='btn btn-soft btn-error ms-2'>Delete</button>
                                     </td>
                                 </tr>)}
