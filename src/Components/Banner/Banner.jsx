@@ -23,7 +23,7 @@ const Banner = () => {
                     <button className="btn rounded-r-full bg-purple-500 mr-2 -pt-1"><FaSearch className='text-white'></FaSearch></button>
                 </div>
                 <div className='text-center mx-3 md:mx-0'>
-                    <button className='btn bg-purple-500 text-white'>Watch All Products</button>
+                    <Link to="/allproducts"><button className='btn bg-purple-500 text-white'>Watch All Products</button></Link>
                     <Link to="/createproducts"><button className='btn'>Post an product</button></Link>
                 </div>
             </div>

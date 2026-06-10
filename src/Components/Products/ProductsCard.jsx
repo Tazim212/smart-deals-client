@@ -6,9 +6,9 @@ const ProductsCard = ({ product }) => {
     const { _id, title, price_min, price_max, image } = product
     return (
         <div className="card bg-linear-to-r from-gray-200 to-mauve-500 w-70 lg:w-80 mx-auto shadow-sm">
-            <figure>
+            <figure className='bg-transparent'>
                 <img
-                    className='h-50 w-70 px-2 md:px-0 my-3 rounded-md'
+                    className='h-50 w-70 px-2 md:px-0 my-3 rounded-md bg-none'
                     src={image}
                     alt="Shoes" />
             </figure>

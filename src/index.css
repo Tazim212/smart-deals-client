@@ -4,7 +4,37 @@
     themes: light --default;
 };
 
-/* @plugin "daisyui/theme" {
-    default: true; 
-    --color-primary: purple;
-} */
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-right 40s linear infinite;
+}
+
+/* LEFT → RIGHT movement */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.marquee-img {
+  width: 150px;
+  height: 100px;
+  margin: 0 10px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Pause on hover */
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
