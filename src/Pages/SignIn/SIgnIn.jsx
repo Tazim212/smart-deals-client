@@ -4,7 +4,7 @@ import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SIgnIn = () => {
-    const { handleGoogleSignIn, handleSignIn } = use(AuthContext)
+    const { handleGoogleSignIn, handleSignIn, loading } = use(AuthContext)
     const [show, setShow] = useState(false)
     const [error, setError] = useState("")
     const location = useLocation()
@@ -16,7 +16,7 @@ const SIgnIn = () => {
         const password = e.target.password.value
 
         setError("")
-
+        
         handleSignIn(email, password)
             // eslint-disable-next-line no-unused-vars
             .then(res => {

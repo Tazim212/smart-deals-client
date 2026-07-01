@@ -7,16 +7,17 @@ import { FaStar } from 'react-icons/fa'
 
 const CustomerReview = () => {
     return (
-        <div className='mb-32'>
+        <div className='my-5 max-w-full'>
             <h1 className='text-3xl font-bold text-center'>Customer <span className='text-purple-500'>Review</span></h1>
 
-            <div className='flex flex-col md:flex-row gap-10 items-center justify-around my-5'>
-                <div className="bg-gray-300 w-65">
-                    <figure className="px-16 py-2">
+            <div className='flex flex-col md:flex-row gap-4 lg:gap-8 items-center justify-around my-5 mx-0 md:mx-2 lg:mx-0'>
+
+                <div className="bg-gray-300 mx-0 lg:mx-10 rounded-2xl w-70 lg:w-1/3">
+                    <figure className="py-2">
                         <img
                             src={person1}
                             alt="Shoes"
-                            className="rounded-full w-32 h-32 object-cover" />
+                            className="rounded-full w-32 mx-auto h-32 object-cover" />
                     </figure>
                     <div className="py-3 ps-3">
                         <h2 className="font-semibold text-cyan-600 text-lg text-left">Tom Latham</h2>
@@ -28,12 +29,12 @@ const CustomerReview = () => {
                     </div>
                 </div>
 
-                <div className="bg-gray-300 w-65">
-                    <figure className="px-16 py-2">
+                <div className="bg-gray-300 mx-0 lg:mx-10 rounded-2xl w-70 lg:w-1/3 md:h-75 lg:h-72">
+                    <figure className="py-2">
                         <img
                             src={person2}
                             alt="Shoes"
-                            className="rounded-full w-32 h-32 object-cover" />
+                            className="rounded-full w-32 mx-auto h-32 object-cover" />
                     </figure>
                     <div className="py-3 ps-3">
                         <h2 className="font-semibold text-cyan-600 text-lg text-left">Nipa Akter</h2>
@@ -47,14 +48,14 @@ const CustomerReview = () => {
                 </div>
 
 
-                <div className="bg-gray-300 w-65">
-                    <figure className="px-16 py-2">
+                <div className="bg-gray-300 mx-0 lg:mx-10 rounded-2xl w-70 lg:w-1/3 md:h-75 lg:h-72">
+                    <figure className="py-2">
                         <img
                             src={person3}
                             alt="Shoes"
-                            className="rounded-full w-32 h-32 object-cover" />
+                            className="rounded-full w-32 h-32 mx-auto object-cover" />
                     </figure>
-                    <div className="py-3 ps-3">
+                    <div className="py-2 ps-3">
                         <h2 className="font-semibold text-cyan-600 text-lg text-left">Monir Hossain</h2>
                         <p className='text-xs'>My experience with Smart Deals was fantastic from start to finish.
                             The product was well-packaged, arrived on time, and matched the description perfectly."</p>

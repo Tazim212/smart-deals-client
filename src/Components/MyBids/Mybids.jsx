@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 const Mybids = () => {
     const { user } = use(AuthContext)
     const [bids, setBida] = useState([])
-    
+
 
     useEffect(() => {
         fetch(`https://smart-deals-server-tc3q.onrender.com/bids?email=${user?.email}`, {

@@ -148,30 +148,31 @@ const ProductDetails = () => {
                 </div>
             </div>
             <div>
-                <h1 className='text-3xl font-bold ms-0 md:ms-15'>bids for this product: <span className='text-purple-500'>{bids.length}</span></h1>
+                <h1 className='text-3xl font-bold ms-3 md:ms-15'>bids for this product: <span className='text-purple-500'>{bids.length}</span></h1>
 
                 {bids.length === 0 ?
                     <h2 className='text-center text-lg py-4'>No bid has been placed for this product</h2>
                     :
-                    <table className="table w-11/12 bg-gray-300 ms-0 md:ms-14 my-4">
+                    <table className="table w-11/12 bg-gray-300 ms-0 md:ms-14 my-4 border-2 border-solid">
                         <thead>
                             <tr>
-                                <th>SL No.</th>
-                                <th>Product Name</th>
-                                <th>Seller Name</th>
-                                <th>Bid Price</th>
-                                <th>Actions</th>
+                                <th className='border'>SL No.</th>
+                                <th className='border'>Product Name</th>
+                                <th className='border'>Seller Name</th>
+                                <th className='border'>Bid Price</th>
+                                <th className='border'>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {bids.map((bid, index) =>
+                            { bids.map((bid, index) =>
                                 <tr key={bid._id}>
-                                    <td>{index + 1}</td>
-                                    <td>{bid.product_name}</td>
-                                    <td>{bid.buyer_name}</td>
-                                    <td>{bid.bid_price}</td>
-                                    <td>Delete</td>
-                                </tr>)}
+                                    <td className='border'>{index + 1}</td>
+                                    <td className='border'>{bid.product_name}</td>
+                                    <td className='border'>{bid.buyer_name}</td>
+                                    <td className='border'>{bid.bid_price}</td>
+                                    <td className='border'>Delete</td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>}
             </div>
@@ -179,3 +180,4 @@ const ProductDetails = () => {
     );
 };
 export default ProductDetails;
+

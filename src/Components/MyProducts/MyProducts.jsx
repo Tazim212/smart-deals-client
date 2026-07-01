@@ -74,7 +74,7 @@ const MyProducts = () => {
                 {myProduct.length === 0 ?
                     <h2 className='text-xl text-center py-8'>No product has been added</h2>
                     :
-                    <table className="table w-11/12 ms-14 my-5 bg-gray-300 border-2 border-solid">
+                    <table className="table w-11/12 ms-2 md:ms-14 my-5 bg-gray-300 border-2 border-solid">
                         <thead>
                             <tr>
                                 <th className='border'>SL No.</th>

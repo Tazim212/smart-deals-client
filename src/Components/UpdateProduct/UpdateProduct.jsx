@@ -11,7 +11,7 @@ const UpdateProduct = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/updateproducts/${id}`)
+        fetch(`https://smart-deals-server-tc3q.onrender.com/updateproducts/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
@@ -51,7 +51,7 @@ const UpdateProduct = () => {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/updateproducts/${id}`, {
+                fetch(`https://smart-deals-server-tc3q.onrender.com/updateproducts/${id}`, {
                     method: "PATCH",
                     headers: {
                         "content-type": "application/json"

@@ -34,15 +34,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mybids",
-                element: <PrivateRoute><Mybids></Mybids></PrivateRoute>
+                element: <PrivateRoute><Mybids></Mybids></PrivateRoute>,
+                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
             },
             {
                 path: "/myproducts",
-                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
+                element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
+                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
             },
             {
                 path: "/createproducts",
-                element: <PrivateRoute><CreateProduct></CreateProduct></PrivateRoute>
+                element: <PrivateRoute><CreateProduct></CreateProduct></PrivateRoute>,
+                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
             },
             {
                 path: "/updateproducts/:id",

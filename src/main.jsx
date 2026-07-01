@@ -8,7 +8,8 @@ import AuthProvider from './Components/AuthProvider/AuthProvider.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <Suspense>
+      <Suspense fallback={<h2 className='text-center pt-50 text-xl'>Loading.......</h2>
+      }>
         <RouterProvider router={router}></RouterProvider>
       </Suspense>
     </AuthProvider>
