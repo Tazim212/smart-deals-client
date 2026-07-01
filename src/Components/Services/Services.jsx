@@ -1,4 +1,12 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+
+
 const Services = () => {
+
     const services = [
         {
             title: "Product Listing",
@@ -27,20 +35,42 @@ const Services = () => {
     ]
 
     return (
-        <div className="my-3">
-            <h1 className="text-3xl text-center font-bold">Our Services</h1>
+        <div className="my-3 py-4 mx-8 ">
+            <h1 className="text-3xl text-center font-bold mb-3">Our Services</h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 lg:gap-10 my-4 mx-0 md:mx-12 lg:mx-18">
+            <Swiper
+                effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                slidesPerView={'auto'}
+                loop={true}
+                autoplay={{
+                    delay: 2000,
+                    disableOnInteraction: false,
+                }}
+                coverflowEffect={{
+                    rotate: 30,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                }}
+                pagination={true}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
+                className="mySwiper h-60 w-3/4"
+            >
                 {
                     services.map((service, index) =>
-                        <div key={index} className="card bg-linear-to-l from-cyan-800 to-amber-900 text-gray-100 w-80 mx-auto md:mx-0 shadow-2xl">
-                            <div className="card-body">
-                                <h2 className="card-title">{service.title}</h2>
-                                <p>{service.description}</p>
+                        <SwiperSlide key={index}>
+                            <div
+                                className='pt-10 bg-linear-to-r from-emerald-700
+                             to-purple-600 h-50 w-1/2 text-white shadow-lg'>
+                                <h1 className='text-2xl font-bold text-center'>{service.title}</h1>
+                                <p className='text-center px-1.5 text-md italic'>{service.description}</p>
                             </div>
-                        </div>)
+                        </SwiperSlide>)
                 }
-            </div>
+            </Swiper>
         </div>
     )
 }
