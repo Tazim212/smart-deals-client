@@ -2,13 +2,18 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Layout/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router';
+import Loading from '../../Layout/Loading/Loading';
 
 const MyProducts = () => {
 
     const { user } = use(AuthContext)
     const [myProduct, setMyProduct] = useState([])
 
+
     useEffect(() => {
+        if(!user?.email){
+            return;
+        }
         fetch(`https://smart-deals-server-tc3q.onrender.com/myproducts?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem("token")}`
@@ -70,40 +75,42 @@ const MyProducts = () => {
     return (
         <div className='my-12'>
             <h1 className='text-3xl font-bold text-center'>My Products: <span className='text-purple-500'>{myProduct.length}</span></h1>
-            <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
-                {myProduct.length === 0 ?
-                    <h2 className='text-xl text-center py-8'>No product has been added</h2>
-                    :
-                    <table className="table w-11/12 ms-2 md:ms-14 my-5 bg-gray-300 border-2 border-solid">
-                        <thead>
-                            <tr>
-                                <th className='border'>SL No.</th>
-                                <th className='border'>Product Name</th>
-                                <th className='border'>Category</th>
-                                <th className='border'>Price</th>
-                                <th className='border'>Status</th>
-                                <th className='border'>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {myProduct.map((product, index) =>
-                                <tr key={product._id}>
-                                    <td className='border'>{index + 1}</td>
-                                    <td className='border'>{product.title}</td>
-                                    <td className='border'>{product.category}</td>
-                                    <td className='border'>{product.min_price} - {product.max_price}</td>
-                                    <td className='border'>
-                                        <span className="badge badge-warning">
-                                            Pending
-                                        </span>
-                                    </td>
-                                    <td className='border'>
-                                        <Link to={`/updateproducts/${product._id}`}><button className='btn btn-soft btn-success ms-2 mb-2 md:mb-0'>Edit</button></Link>
-                                        <button onClick={() => handleDelete(product._id)} className='btn btn-soft btn-error ms-2'>Delete</button>
-                                    </td>
-                                </tr>)}
-                        </tbody>
-                    </table>}
+            <div className="overflow-x-auto rounded-box border border-base-content/5">
+
+                {
+                    myProduct.length === 0 ?
+                        <h2 className='text-xl text-center py-8'>No product has been added</h2>
+                        :
+                        <table className="table w-11/12 ms-2 md:ms-14 my-5 bg-gray-300 border-2 border-solid">
+                            <thead>
+                                <tr>
+                                    <th className='border'>SL No.</th>
+                                    <th className='border'>Product Name</th>
+                                    <th className='border'>Category</th>
+                                    <th className='border'>Price</th>
+                                    <th className='border'>Status</th>
+                                    <th className='border'>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {myProduct.map((product, index) =>
+                                    <tr key={product._id}>
+                                        <td className='border'>{index + 1}</td>
+                                        <td className='border'>{product.title}</td>
+                                        <td className='border'>{product.category}</td>
+                                        <td className='border'>{product.min_price} - {product.max_price}</td>
+                                        <td className='border'>
+                                            <span className="badge badge-warning">
+                                                Pending
+                                            </span>
+                                        </td>
+                                        <td className='border'>
+                                            <Link to={`/updateproducts/${product._id}`}><button className='btn btn-soft btn-success ms-2 mb-2 md:mb-0'>Edit</button></Link>
+                                            <button onClick={() => handleDelete(product._id)} className='btn btn-soft btn-error ms-2'>Delete</button>
+                                        </td>
+                                    </tr>)}
+                            </tbody>
+                        </table>}
             </div>
         </div>
     );

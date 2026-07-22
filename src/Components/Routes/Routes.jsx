@@ -10,6 +10,7 @@ import Mybids from "../MyBids/Mybids";
 import CreateProduct from "../CreateProduct/CreateProduct";
 import MyProducts from "../MyProducts/MyProducts";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import Loading from "../../Layout/Loading/Loading";
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/allproducts",
-                Component: AllProducts
+                Component: AllProducts,
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/signin",
@@ -35,17 +37,18 @@ export const router = createBrowserRouter([
             {
                 path: "/mybids",
                 element: <PrivateRoute><Mybids></Mybids></PrivateRoute>,
-                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
+                hydrateFallbackElement: <Loading></Loading>
+
             },
             {
                 path: "/myproducts",
                 element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>,
-                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/createproducts",
                 element: <PrivateRoute><CreateProduct></CreateProduct></PrivateRoute>,
-                hydrateFallbackElement: <span className="loading loading-dots loading-xl"></span>
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: "/updateproducts/:id",

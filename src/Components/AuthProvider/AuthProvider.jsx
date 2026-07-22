@@ -39,16 +39,18 @@ const AuthProvider = ({ children }) => {
                     },
                     body: JSON.stringify(loggerUser)
                 })
-                .then(res => res.json())
-                .then(data => {
-                    localStorage.setItem("token", data.token)
-                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem("token", data.token)
+                        setUser(currentUser)
+                        setLoading(false)
+                    })
             }
             else {
                 localStorage.removeItem("token")
+                setUser(null)
+                setLoading(false)
             }
-            setUser(currentUser)
-            setLoading(false)
         });
         return () => {
             unSubscribe()
